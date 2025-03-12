@@ -1,0 +1,891 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:isactr="http://schemas.uipath.com/workflow/integration-service-activities/isactr" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:uasa="clr-namespace:UiPath.Activities.System.Arrays;assembly=UiPath.System.Activities" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ugade="clr-namespace:UiPath.GSuite.Activities.Drive.Enums;assembly=UiPath.GSuite.Activities" xmlns:ugam="clr-namespace:UiPath.GSuite.Activities.Models;assembly=UiPath.GSuite.Activities" xmlns:ugdm="clr-namespace:UiPath.GSuite.Drive.Models;assembly=UiPath.GSuite" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uiascb="clr-namespace:UiPath.IntegrationService.Activities.SWEntities.C67A9CCCB6D_v2_sub_generateChatCompletion_Create.Bundle;assembly=C67A9CCCB6D_v2_sub_g.cicNZ3bBCJ1HuAuP1Elfu2" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_strPrompt" Type="InArgument(x:String)" />
+    <x:Property Name="out_strUrl" Type="OutArgument(x:String)" />
+    <x:Property Name="in_strContent" Type="InArgument(x:String)" />
+    <x:Property Name="in_gdriveFolder" Type="InArgument(ugdm:GDriveRemoteItem)" />
+    <x:Property Name="in_boolTexts" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_strGoogleCredential" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>818.4,454.4</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="100">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Windows.Forms</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.GSuite.Activities.Drive.Enums</x:String>
+      <x:String>UiPath.GSuite.Drive.Models</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.GSuite.Activities.Models</x:String>
+      <x:String>UiPath.Shared.Activities.Utils</x:String>
+      <x:String>UiPath.GSuite.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.GSuite</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Models.FilterBuilder</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Models</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Helpers.TypeDetailsCustomization</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Activities</x:String>
+      <x:String>UiPath.Platform.Activities</x:String>
+      <x:String>UiPath.Word.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Word</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>UiPath.GSuite.Activities.Docs</x:String>
+      <x:String>UiPath.GSuite.Activities.Docs.Enums</x:String>
+      <x:String>UiPath.GSuite.Activities.Enums</x:String>
+      <x:String>UiPath.GSuite.Activities.Contracts</x:String>
+      <x:String>Google.Apis.Auth.OAuth2</x:String>
+      <x:String>Google.Apis.Docs.v1</x:String>
+      <x:String>Google.Apis.Docs.v1.Data</x:String>
+      <x:String>Google.Apis.Services</x:String>
+      <x:String>System.Threading.Tasks</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>UiPath.Activities.System.Arrays</x:String>
+      <x:String>UiPath.Activities.System.Collections</x:String>
+      <x:String>System.Numerics</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="80">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.MetadataLoadContext</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>UiPath.IntegrationService.Activities.Runtime</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>C67A9CCCB6D_v2_sub_g.cicNZ3bBCJ1HuAuP1Elfu2</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
+      <AssemblyReference>Google.Apis.Auth</AssemblyReference>
+      <AssemblyReference>Google.Apis.Docs.v1</AssemblyReference>
+      <AssemblyReference>Google.Apis</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Core</AssemblyReference>
+      <AssemblyReference>System.Threading.Tasks.Parallel</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>C1F775216B1_generate.D9bAE4htkVP1ES9Yk1JRpt6</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="GeneratedDocument" sap:VirtualizedContainerService.HintSize="1074,1104" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ugdm:GDriveRemoteItem" Name="gdirveDocument" />
+      <Variable x:TypeArguments="x:String" Name="strTextGenerated" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="listHeading1Texts" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="listHeading2Texts" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="listHeading3Texts" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="listTitleTexts" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="listBoldTexts" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="listHeading4Texts" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:MultipleAssign DisplayName="Multiple Assign List" sap:VirtualizedContainerService.HintSize="1074,57" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:List(x:String)">[listHeading1Texts]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:List(x:String)">[New List(Of String)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:List(x:String)">[listHeading2Texts]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:List(x:String)">[New List(Of String)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:List(x:String)">[listHeading3Texts]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:List(x:String)">[New List(Of String)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:List(x:String)">[listTitleTexts]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:List(x:String)">[New List(Of String)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:List(x:String)">[listBoldTexts]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:List(x:String)">[New List(Of String)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:List(x:String)">[listHeading4Texts]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:List(x:String)">[New List(Of String)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:MultipleAssign>
+    <uga:CreateDocumentConnections BrowserParentFolderFriendlyName="{x:Null}" BrowserParentFolderId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID0}" ManualEntryParentFolderId="{x:Null}" AuthScopesInvalid="False" ConflictResolution="[UiPath.GSuite.Activities.Drive.Enums.ConflictBehavior.AddSeparate]" ConnectionId="9ec480b7-fae9-4cdd-92ec-3d02a4f03c90" DisplayName="Create File Document" DocumentName="[in_strContent]" sap:VirtualizedContainerService.HintSize="1074,57" sap2010:WorkflowViewState.IdRef="CreateDocumentConnections_1" NewDocument="[gdirveDocument]" ParentFolderExisting="[in_gdriveFolder]" ParentFolderInputMode="UseExisting" UseConnectionService="True">
+      <uga:CreateDocumentConnections.Item>
+        <ugam:DriveItemArgument BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" ConnectionKey="f82a3549-a140-4ce4-be97-b4f6a81f153a" Existing="[in_gdriveFolder]" FullPathHint="My Drive/GeneratedDocuments" InputMode="UseExisting">
+          <ugam:DriveItemArgument.Backup>
+            <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID0" StoredValue="UseExisting">
+              <usau:BackupSlot.BackupValues>
+                <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="2">
+                  <InArgument x:TypeArguments="x:String">https://drive.google.com/drive/folders/1RW1-K_G_2s7qRSkEhml0pgJt-4j6YmQb</InArgument>
+                  <InArgument x:TypeArguments="x:String">GeneratedDocuments</InArgument>
+                </scg:List>
+                <scg:List x:TypeArguments="x:Object" x:Key="UseExisting" Capacity="1">
+                  <InArgument x:TypeArguments="ugdm:GDriveRemoteItem">["GeneratedText"]</InArgument>
+                </scg:List>
+                <scg:List x:TypeArguments="x:Object" x:Key="UrlOrId" Capacity="1">
+                  <x:Null />
+                </scg:List>
+              </usau:BackupSlot.BackupValues>
+            </usau:BackupSlot>
+          </ugam:DriveItemArgument.Backup>
+          <ugam:DriveItemArgument.ParentIdFullPathHint>
+            <InArgument x:TypeArguments="x:String">
+              <Literal x:TypeArguments="x:String" Value="" />
+            </InArgument>
+          </ugam:DriveItemArgument.ParentIdFullPathHint>
+        </ugam:DriveItemArgument>
+      </uga:CreateDocumentConnections.Item>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uga:CreateDocumentConnections>
+    <Assign DisplayName="Assign out_strUrl" sap:VirtualizedContainerService.HintSize="1074,114" sap2010:WorkflowViewState.IdRef="Assign_18">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_strUrl]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[gdirveDocument.Url]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1074,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;File : &quot;+in_strContent+vbNewLine+&#xA;&quot;DocUrl : &quot; +out_strUrl+vbNewLine+&#xA;&quot;DocId : &quot;+gdirveDocument.ID]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <isactr:ConnectorActivity Configuration="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" ConnectionId="ace5bb0d-6f16-4748-b325-9fff6bb82f91" DisplayName="Content Generation" sap:VirtualizedContainerService.HintSize="1074,57" sap2010:WorkflowViewState.IdRef="ConnectorActivity_2" UiPathActivityTypeId="aba52a00-4c05-318d-8f99-5ad924b2f277">
+      <isactr:ConnectorActivity.FieldObjects>
+        <isactr:FieldObject Name="modelName" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <InArgument x:TypeArguments="x:String">gpt-4o-mini-2024-07-18</InArgument>
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="prompt" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <InArgument x:TypeArguments="x:String">[in_strPrompt + " "+in_strContent]</InArgument>
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="isPIIEnabled" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="isFilterPIIEnabled" Type="FieldArgument" />
+        <isactr:FieldObject Name="languageCode" Type="FieldArgument" />
+        <isactr:FieldObject Name="piiEntityCategories_array" Type="FieldArgument" />
+        <isactr:FieldObject Name="confidenceThreshold" Type="FieldArgument" />
+        <isactr:FieldObject Name="topK" Type="FieldArgument" />
+        <isactr:FieldObject Name="contextGrounding" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <InArgument x:TypeArguments="x:String">None</InArgument>
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="_file" Type="FieldArgument" />
+        <isactr:FieldObject Name="folderKey" Type="FieldArgument" />
+        <isactr:FieldObject Name="topP" Type="FieldArgument" />
+        <isactr:FieldObject Name="indexID" Type="FieldArgument" />
+        <isactr:FieldObject Name="numberOfResults" Type="FieldArgument" />
+        <isactr:FieldObject Name="top_p" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <InArgument x:TypeArguments="x:Int64">1</InArgument>
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="instruction" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <InArgument x:TypeArguments="x:String">You are a helpful assistant</InArgument>
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="max_tokens" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <InArgument x:TypeArguments="x:Int64" />
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="temperature" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <InArgument x:TypeArguments="x:Double">0.5</InArgument>
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="frequency_penalty" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <InArgument x:TypeArguments="x:Int64">1</InArgument>
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="presence_penalty" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <InArgument x:TypeArguments="x:Int64">1</InArgument>
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="n" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <InArgument x:TypeArguments="x:Int64">1</InArgument>
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="_stop" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <InArgument x:TypeArguments="x:String" />
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="out_text" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <OutArgument x:TypeArguments="x:String">[strTextGenerated]</OutArgument>
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="out_maskedText" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <OutArgument x:TypeArguments="x:String" />
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="Jit_v2_sub_generateChatCompletion" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <OutArgument x:TypeArguments="uiascb:v2_sub_generateChatCompletion_Create" />
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="out_contextGroundingCitationsString" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <OutArgument x:TypeArguments="x:String" />
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+      </isactr:ConnectorActivity.FieldObjects>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </isactr:ConnectorActivity>
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code=" string RemoveEmptyLines(string input)&#xA;    {&#xA;        return string.Join(&quot;\n&quot;, input.Split('\n')&#xA;                                      .Where(line =&gt; !string.IsNullOrWhiteSpace(line))&#xA;                                      .ToArray());&#xA;    }&#xA;&#x9;result = RemoveEmptyLines(text);" DisplayName="Invoke Code Remove Line Empty" sap:VirtualizedContainerService.HintSize="1074,197" sap2010:WorkflowViewState.IdRef="InvokeCode_6" Language="CSharp">
+      <ui:InvokeCode.Arguments>
+        <OutArgument x:TypeArguments="x:String" x:Key="result">[strTextGenerated]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="text">[strTextGenerated]</InArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <Parallel sap:VirtualizedContainerService.HintSize="1074,119" sap2010:WorkflowViewState.IdRef="Parallel_2">
+      <Sequence DisplayName="Headings" sap:VirtualizedContainerService.HintSize="490,40" sap2010:WorkflowViewState.IdRef="Sequence_45">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="listMatchesHeading" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:Matches FirstMatch="{x:Null}" BuilderPattern="(?:\#).*" DisplayName="Find Matching Patterns Heading" sap:VirtualizedContainerService.HintSize="416,92" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[strTextGenerated]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;(?:\\#).*&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(?:\#).*" RegexOption="IgnoreCase, Compiled" Result="[listMatchesHeading]">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:Matches>
+        <If Condition="[in_strPrompt.trim.ToLower.Contains(&quot;title&quot;) OrElse &#xA;in_strPrompt.trim.ToLower.Contains(&quot;tieude&quot;) OrElse&#xA;in_strPrompt.trim.ToLower.Contains(&quot;tiêu đề&quot;) OrElse&#xA;in_strPrompt.trim.ToLower.Contains(&quot;tiêuđề&quot;)]" DisplayName="If Check Have Need Title" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="If_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="502,755" sap2010:WorkflowViewState.IdRef="Sequence_42">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Sequence DisplayName="add_list_title" sap:VirtualizedContainerService.HintSize="468,695" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="str:Match" Name="strFindMatch" />
+                  <Variable x:TypeArguments="x:String" Name="strReplaceMatch" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Assign strFindMatch" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_15">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="str:Match">[strFindMatch]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="str:Match">[listMatchesHeading(0)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign strReplceMatch" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_16">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strReplaceMatch]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[strFindMatch.Value.Replace("#","").Trim]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List Title" sap:VirtualizedContainerService.HintSize="434,165" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_27" ItemToAppend="[strReplaceMatch]" List="[listTitleTexts]" />
+                <Assign DisplayName="Assign strTextGenerated" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_17">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strTextGenerated]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[strTextGenerated.Replace(strFindMatch.Value.Trim,strReplaceMatch)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign listMatches skip 1" sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_14">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="scg:IEnumerable(str:Match)">[listMatchesHeading]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="scg:IEnumerable(str:Match)">[listMatchesHeading.Skip(1).ToList]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </Sequence>
+          </If.Then>
+          <If.Else>
+            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="502,89" sap2010:WorkflowViewState.IdRef="Sequence_43">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Sequence>
+          </If.Else>
+        </If>
+        <ParallelForEach x:TypeArguments="str:Match" DisplayName="Parallel For Each ListMatches" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_4" Values="[listMatchesHeading]">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="str:Match">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="str:Match" Name="item" />
+            </ActivityAction.Argument>
+            <TryCatch DisplayName="tc_add_list_headings" sap:VirtualizedContainerService.HintSize="506,2119" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <TryCatch.Try>
+                <Sequence DisplayName="try_add_list_headings" sap:VirtualizedContainerService.HintSize="504,1863" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="strFindMatch" />
+                    <Variable x:TypeArguments="x:String" Name="strReplaceMatch" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign DisplayName="Assign strFindMatch" sap:VirtualizedContainerService.HintSize="470,114" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[strFindMatch]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[item.Value]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:IfElseIfV2 Condition="[Not String.IsNullOrEmpty(strFindMatch) AndAlso strFindMatch.Substring(0,4).Equals(&quot;####&quot;)]" DisplayName="Else If Check Heading" sap:VirtualizedContainerService.HintSize="470,1584" sap2010:WorkflowViewState.IdRef="IfElseIfV2_1">
+                    <ui:IfElseIfV2.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,330" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Assign strReplceMatch" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_7">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[strReplaceMatch]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[strFindMatch.Replace("#","").Trim]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List Heading1" sap:VirtualizedContainerService.HintSize="434,156" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_31" ItemToAppend="[strReplaceMatch]" List="[listHeading1Texts]" />
+                      </Sequence>
+                    </ui:IfElseIfV2.Else>
+                    <ui:IfElseIfV2.ElseIfs>
+                      <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                        <ui:IfElseIfBlock BlockType="ElseIf" Condition="[Not String.IsNullOrEmpty(strFindMatch) AndAlso strFindMatch.Substring(0,3).Equals(&quot;###&quot;)]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_2">
+                          <ui:IfElseIfBlock.Then>
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,330" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign DisplayName="Assign strReplceMatch" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[strReplaceMatch]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[strFindMatch.Replace("###","").Trim]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List Heading3" sap:VirtualizedContainerService.HintSize="434,156" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_29" ItemToAppend="[strReplaceMatch]" List="[listHeading3Texts]" />
+                            </Sequence>
+                          </ui:IfElseIfBlock.Then>
+                        </ui:IfElseIfBlock>
+                        <ui:IfElseIfBlock BlockType="ElseIf" Condition="[Not String.IsNullOrEmpty(strFindMatch) AndAlso strFindMatch.Substring(0,2).Equals(&quot;##&quot;)]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_6">
+                          <ui:IfElseIfBlock.Then>
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,330" sap2010:WorkflowViewState.IdRef="Sequence_64">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign DisplayName="Assign strReplceMatch" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[strReplaceMatch]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[strFindMatch.Replace("##","").Trim]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List Heading2" sap:VirtualizedContainerService.HintSize="434,156" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_30" ItemToAppend="[strReplaceMatch]" List="[listHeading2Texts]" />
+                            </Sequence>
+                          </ui:IfElseIfBlock.Then>
+                        </ui:IfElseIfBlock>
+                      </sc:BindingList>
+                    </ui:IfElseIfV2.ElseIfs>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:IfElseIfV2.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,330" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Assign strReplceMatch" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_34">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[strReplaceMatch]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[strFindMatch.Replace("####","").Trim]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List Heading4" sap:VirtualizedContainerService.HintSize="434,156" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_28" ItemToAppend="[strReplaceMatch]" List="[listHeading4Texts]" />
+                      </Sequence>
+                    </ui:IfElseIfV2.Then>
+                  </ui:IfElseIfV2>
+                  <Assign DisplayName="Assign strTextGenerated" sap:VirtualizedContainerService.HintSize="470,105" sap2010:WorkflowViewState.IdRef="Assign_4">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[strTextGenerated]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[strTextGenerated.Replace(strFindMatch,strReplaceMatch)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </TryCatch.Try>
+              <TryCatch.Catches>
+                <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                  <ActivityAction x:TypeArguments="s:Exception">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="504,89" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Sequence>
+                  </ActivityAction>
+                </Catch>
+              </TryCatch.Catches>
+              <TryCatch.Finally>
+                <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="504,25" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </TryCatch.Finally>
+            </TryCatch>
+          </ActivityAction>
+        </ParallelForEach>
+      </Sequence>
+      <Sequence DisplayName="BoldTexts" sap:VirtualizedContainerService.HintSize="490,40" sap2010:WorkflowViewState.IdRef="Sequence_46">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="listMatchesTexts" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If Condition="[in_boolTexts]" DisplayName="If Check Bold Texts" sap:VirtualizedContainerService.HintSize="470,494" sap2010:WorkflowViewState.IdRef="If_2">
+          <If.Then>
+            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,200" sap2010:WorkflowViewState.IdRef="Sequence_71">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:Matches FirstMatch="{x:Null}" BuilderPattern="(?:\#).*" DisplayName="Find Matching Patterns Texts" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[strTextGenerated]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;(?:\\#).*&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(?:\*\*).*(?:\*\*)" RegexOption="IgnoreCase, Compiled" Result="[listMatchesTexts]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:Matches>
+              <ParallelForEach x:TypeArguments="str:Match" DisplayName="Parallel For Each ListMatches" sap:VirtualizedContainerService.HintSize="434,48" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_5" Values="[listMatchesTexts]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ActivityAction x:TypeArguments="str:Match">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="str:Match" Name="item" />
+                  </ActivityAction.Argument>
+                  <TryCatch DisplayName="tc_add_list_headings" sap:VirtualizedContainerService.HintSize="470,814" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <TryCatch.Try>
+                      <Sequence DisplayName="try_add_list_headings" sap:VirtualizedContainerService.HintSize="468,558" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:String" Name="strFindMatch" />
+                          <Variable x:TypeArguments="x:String" Name="strReplaceMatch" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Assign strFindMatch" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_19">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[strFindMatch]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[item.Value]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign DisplayName="Assign strReplceMatch" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_21">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[strReplaceMatch]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[strFindMatch.Replace("**","").Trim]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List BoldTexts" sap:VirtualizedContainerService.HintSize="434,165" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_12" ItemToAppend="[strReplaceMatch]" List="[listBoldTexts]" />
+                        <Assign DisplayName="Assign strTextGenerated" sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_20">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[strTextGenerated]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[strTextGenerated.Replace(strFindMatch,strReplaceMatch+" ")]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </TryCatch.Try>
+                    <TryCatch.Catches>
+                      <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                        <ActivityAction x:TypeArguments="s:Exception">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,89" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </Sequence>
+                        </ActivityAction>
+                      </Catch>
+                    </TryCatch.Catches>
+                    <TryCatch.Finally>
+                      <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="468,25" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </TryCatch.Finally>
+                  </TryCatch>
+                </ActivityAction>
+              </ParallelForEach>
+            </Sequence>
+          </If.Then>
+          <If.Else>
+            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,165" sap2010:WorkflowViewState.IdRef="Sequence_72">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign DisplayName="Assign TextGenerated Replace *" sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_37">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[strTextGenerated]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[strTextGenerated.Replace("*","")]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </Sequence>
+          </If.Else>
+        </If>
+      </Sequence>
+    </Parallel>
+    <Parallel DisplayName="Parallel_Write_Text" sap:VirtualizedContainerService.HintSize="1074,119" sap2010:WorkflowViewState.IdRef="Parallel_9">
+      <uga:WriteTextConnections BrowserFileId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" FileFriendlyName="{x:Null}" FileIdBackup="{x:Reference __ReferenceID1}" ManualFileId="{x:Null}" Section="{x:Null}" AuthScopesInvalid="False" ConnectionId="898f3a88-8a22-4d3c-bb3a-ad206f04118f" DisplayName="Write File Text" File="[gdirveDocument]" FileInputMode="UseExisting" sap:VirtualizedContainerService.HintSize="240,40" sap2010:WorkflowViewState.IdRef="WriteTextConnections_3" MatchCase="False" MatchMode="Contains" Text="[strTextGenerated]" UseConnectionService="True" WriteTextMode="BeginningOfDocument" WriteTextStyle="[UiPath.GSuite.Activities.Docs.Enums.WriteTextStyle.NormalText]">
+        <uga:WriteTextConnections.Item>
+          <ugam:DriveItemArgument BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" Existing="[gdirveDocument]" InputMode="UseExisting">
+            <ugam:DriveItemArgument.Backup>
+              <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID1" StoredValue="UseExisting">
+                <usau:BackupSlot.BackupValues>
+                  <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="2">
+                    <x:Null />
+                    <x:Null />
+                  </scg:List>
+                </usau:BackupSlot.BackupValues>
+              </usau:BackupSlot>
+            </ugam:DriveItemArgument.Backup>
+            <ugam:DriveItemArgument.FullPathHint>
+              <InArgument x:TypeArguments="x:String">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+            </ugam:DriveItemArgument.FullPathHint>
+            <ugam:DriveItemArgument.ParentIdFullPathHint>
+              <InArgument x:TypeArguments="x:String">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+            </ugam:DriveItemArgument.ParentIdFullPathHint>
+          </ugam:DriveItemArgument>
+        </uga:WriteTextConnections.Item>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </uga:WriteTextConnections>
+      <If Condition="[in_boolTexts]" DisplayName="If Check Bold Texts" sap:VirtualizedContainerService.HintSize="240,40" sap2010:WorkflowViewState.IdRef="If_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,165" sap2010:WorkflowViewState.IdRef="Sequence_73">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="Assign listBoldTexts" sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_35">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:List(x:String)">[listBoldTexts]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:List(x:String)">[listBoldTexts.Union(listHeading1Texts).Union(listHeading2Texts).Union(listHeading3Texts).Union(listHeading4Texts).Union(listTitleTexts).ToList]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,89" sap2010:WorkflowViewState.IdRef="Sequence_74">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </If.Else>
+      </If>
+    </Parallel>
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="UpdateGoogleDocsHeadings(googleCredential,docId, heading1Texts, heading2Texts, heading3Texts, heading4Texts, titleTexts, boldTexts);&#xD;&#xA;void UpdateGoogleDocsHeadings(string googleCredential, string docId, List&lt;string&gt; heading1, List&lt;string&gt; heading2, List&lt;string&gt; heading3, List&lt;string&gt; heading4, List&lt;string&gt; title, List&lt;string&gt; boldText)&#xD;&#xA;{&#xD;&#xA;    try&#xD;&#xA;    {&#xD;&#xA;        // Xác thực với Google API&#xD;&#xA;        var credential = GoogleCredential.FromFile(googleCredential).CreateScoped(DocsService.Scope.Documents);&#xD;&#xA;&#xD;&#xA;        var service = new DocsService(new BaseClientService.Initializer()&#xD;&#xA;        {&#xD;&#xA;            HttpClientInitializer = credential,&#xD;&#xA;            ApplicationName = &quot;Google Docs API UiPath&quot;,&#xD;&#xA;        });&#xD;&#xA;&#xD;&#xA;        // Lấy nội dung tài liệu&#xD;&#xA;        var doc = service.Documents.Get(docId).Execute();&#xD;&#xA;        if (doc.Body == null || doc.Body.Content == null)&#xD;&#xA;        {&#xD;&#xA;            Console.WriteLine(&quot;Lỗi: Tài liệu không có nội dung.&quot;);&#xD;&#xA;            return;&#xD;&#xA;        }&#xD;&#xA;&#xD;&#xA;        var requests = new List&lt;Request&gt;();&#xD;&#xA;&#xD;&#xA;        // Duyệt qua từng phần tử trong nội dung tài liệu&#xD;&#xA;        foreach (var element in doc.Body.Content)&#xD;&#xA;        {&#xD;&#xA;            if (element?.Paragraph?.Elements == null) continue; // Kiểm tra null&#xD;&#xA;&#xD;&#xA;            foreach (var textElement in element.Paragraph.Elements)&#xD;&#xA;            {&#xD;&#xA;                if (textElement.TextRun?.Content == null) continue;&#xD;&#xA;&#xD;&#xA;                string textContent = textElement.TextRun.Content;&#xD;&#xA;                int? startIndex = textElement.StartIndex;&#xD;&#xA;&#xD;&#xA;                if (!startIndex.HasValue || string.IsNullOrEmpty(textContent)) continue;&#xD;&#xA;&#xD;&#xA;                string headingType = null;&#xD;&#xA;&#xD;&#xA;                // Xác định Heading&#xD;&#xA;                if (heading1 != null &amp;&amp; heading1.Any(t =&gt; textContent.Contains(t))) headingType = &quot;HEADING_1&quot;;&#xD;&#xA;                else if (heading2 != null &amp;&amp; heading2.Any(t =&gt; textContent.Contains(t))) headingType = &quot;HEADING_2&quot;;&#xD;&#xA;                else if (heading3 != null &amp;&amp; heading3.Any(t =&gt; textContent.Contains(t))) headingType = &quot;HEADING_3&quot;;&#xD;&#xA;                else if (heading4 != null &amp;&amp; heading4.Any(t =&gt; textContent.Contains(t))) headingType = &quot;HEADING_4&quot;;&#xD;&#xA;                else if (title != null &amp;&amp; title.Any(t =&gt; textContent.Contains(t))) headingType = &quot;TITLE&quot;;&#xD;&#xA;&#xD;&#xA;                // Nếu là Heading, cập nhật kiểu đoạn văn bản&#xD;&#xA;                if (headingType != null)&#xD;&#xA;                {&#xD;&#xA;                    requests.Add(new Request&#xD;&#xA;                    {&#xD;&#xA;                        UpdateParagraphStyle = new UpdateParagraphStyleRequest&#xD;&#xA;                        {&#xD;&#xA;                            Range = new Google.Apis.Docs.v1.Data.Range&#xD;&#xA;                            {&#xD;&#xA;                                StartIndex = startIndex.Value,&#xD;&#xA;                                EndIndex = startIndex.Value + textContent.Length&#xD;&#xA;                            },&#xD;&#xA;                            ParagraphStyle = new ParagraphStyle { NamedStyleType = headingType },&#xD;&#xA;                            Fields = &quot;namedStyleType&quot;&#xD;&#xA;                        }&#xD;&#xA;                    });&#xD;&#xA;                }&#xD;&#xA;&#xD;&#xA;                // Duyệt từng từ trong danh sách `boldText`&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;if (boldText != null) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;foreach (var word in boldText)&#xD;&#xA;               &#x9;&#x9; {&#xD;&#xA;&#x9;                    int wordIndex = textContent.IndexOf(word, StringComparison.OrdinalIgnoreCase);&#xD;&#xA;&#x9;                    if (wordIndex != -1)&#xD;&#xA;&#x9;                    {&#xD;&#xA;&#x9;                        requests.Add(new Request&#xD;&#xA;&#x9;                        {&#xD;&#xA;&#x9;                            UpdateTextStyle = new UpdateTextStyleRequest&#xD;&#xA;&#x9;                            {&#xD;&#xA;&#x9;                                Range = new Google.Apis.Docs.v1.Data.Range&#xD;&#xA;&#x9;                                {&#xD;&#xA;&#x9;                                    StartIndex = startIndex.Value + wordIndex,&#xD;&#xA;&#x9;                                    EndIndex = startIndex.Value + wordIndex + word.Length&#xD;&#xA;&#x9;                                },&#xD;&#xA;&#x9;                                TextStyle = new TextStyle { Bold = true },&#xD;&#xA;&#x9;                                Fields = &quot;bold&quot;&#xD;&#xA;&#x9;                            }&#xD;&#xA;&#x9;                        });&#xD;&#xA;&#x9;                    }&#xD;&#xA;               &#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;            }&#xD;&#xA;        }&#xD;&#xA;&#xD;&#xA;        // Thực hiện cập nhật&#xD;&#xA;        if (requests.Count &gt; 0)&#xD;&#xA;        {&#xD;&#xA;            var batchUpdateRequest = new BatchUpdateDocumentRequest { Requests = requests };&#xD;&#xA;            service.Documents.BatchUpdate(batchUpdateRequest, docId).Execute();&#xD;&#xA;            Console.WriteLine(&quot;Đã cập nhật Heading và Bold thành công.&quot;);&#xD;&#xA;        }&#xD;&#xA;        else&#xD;&#xA;        {&#xD;&#xA;            Console.WriteLine(&quot;Không tìm thấy văn bản cần cập nhật.&quot;);&#xD;&#xA;        }&#xD;&#xA;    }&#xD;&#xA;    catch (Exception ex)&#xD;&#xA;    {&#xD;&#xA;        Console.WriteLine(&quot;Lỗi: &quot; + ex.Message);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;" DisplayName="Invoke Code Update Headings" sap:VirtualizedContainerService.HintSize="1074,188" sap2010:WorkflowViewState.IdRef="InvokeCode_5" Language="CSharp">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="docId">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="gdirveDocument.ID" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="heading1Texts">
+          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="listHeading1Texts" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="heading2Texts">
+          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="listHeading2Texts" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="heading3Texts">
+          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="listHeading3Texts" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="titleTexts">
+          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="listTitleTexts" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="boldTexts">
+          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="listBoldTexts" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="heading4Texts">
+          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="listHeading4Texts" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="googleCredential">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strGoogleCredential" />
+        </InArgument>
+      </ui:InvokeCode.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeCode>
+  </Sequence>
+</Activity>
