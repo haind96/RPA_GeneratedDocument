@@ -9,7 +9,7 @@
       "AddedNamespaces": null
     },
     {
-      "Path": "GeneratedDocument.xaml",
+      "Path": "Workflows/GeneratedDocument.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
         "listBoldTexts&Sequence_1",
@@ -41,7 +41,7 @@
       "AddedNamespaces": null
     },
     {
-      "Path": "Main.xaml",
+      "Path": "Tests/Main1.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
         "TransactionItem&StateMachine_1",
@@ -73,18 +73,17 @@
       "AddedNamespaces": null
     },
     {
-      "Path": "Process.xaml",
+      "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "dt_Clone&Sequence_26",
-        "listSubTables&Sequence_26",
-        "strUrl&Sequence_28",
-        "strKey&Sequence_28",
         "dt_GetContents&Sequence_12",
         "gdriveFolder&Sequence_12",
         "strUrlFolderDrive&Sequence_12",
+        "listSubTables&Sequence_26",
+        "dt_CloneContents&Sequence_26",
         "strUrl&Sequence_2",
-        "strKey&Sequence_2"
+        "strKey&Sequence_2",
+        "dt_CopyContents&Sequence_27"
       ],
       "ArgumentsSectionElementsOrder": [
         "GoogleCredential",
@@ -97,7 +96,7 @@
       "AddedNamespaces": null
     },
     {
-      "Path": "Comment.xaml",
+      "Path": "Tests/Comment.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
         "dt_Link&Sequence_1",
@@ -110,7 +109,7 @@
       "AddedNamespaces": null
     },
     {
-      "Path": "Facebook.xaml",
+      "Path": "Tests/Facebook.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
         "subTables&Sequence_1",
@@ -119,6 +118,23 @@
         "str1&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Workflows/UpdateDataGenerated.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strUrl&Sequence_2",
+        "strKey&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_strGoogleCredential",
+        "in_boolBoldText",
+        "in_strPrompt",
+        "in_dt_Generated",
+        "in_gdriveFolder"
+      ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
     }

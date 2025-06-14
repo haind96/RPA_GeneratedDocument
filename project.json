@@ -15,13 +15,13 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "23.10.0.0",
-  "projectVersion": "1.1.2",
+  "projectVersion": "1.0.0",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
     "isPausable": true,
     "isAttended": false,
-    "requiresUserInteraction": false,
+    "requiresUserInteraction": true,
     "supportsPersistence": false,
     "workflowSerialization": "DataContract",
     "excludedLoggedData": [
@@ -57,20 +57,8 @@
       "output": []
     },
     {
-      "filePath": "Tests\\Comment.xaml",
-      "uniqueId": "f83a5690-f023-4cd9-a9d4-e2fb1b5d5ece",
-      "input": [],
-      "output": []
-    },
-    {
       "filePath": "Main.xaml",
       "uniqueId": "ee8a04de-36eb-410f-9480-e723ab7e8ad3",
-      "input": [],
-      "output": []
-    },
-    {
-      "filePath": "Tests\\Main1.xaml",
-      "uniqueId": "27dc270f-d72e-49d6-906c-a76f31838bc8",
       "input": [],
       "output": []
     }

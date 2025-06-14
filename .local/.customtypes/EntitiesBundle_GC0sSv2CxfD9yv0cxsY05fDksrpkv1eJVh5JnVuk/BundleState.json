@@ -1,5 +1,14 @@
 {
   "assemblyStates": {
+    "Studio.Generated.TypedDataTable1": {
+      "namespace": "System.Data",
+      "providerName": "TypedDataTable",
+      "key": {
+        "name": "Studio.Generated.TypedDataTable1",
+        "hash": "ReadRangeConnections\u00601_1|DataTable|T1PNoYwrqgwDVLtfmj7L5e0Sq02OEbqHPC8RFhICuUU|M8QgJnMcDYq2DQeuuBU0Jk546eYbnq2FCcwUoYRi4Ss|HT8aFX0uTakdBZzx1gQ7QazRUYM25L1273kAdp3Xng",
+        "assemblyName": "Studio.Generated.TypedDataTable1"
+      }
+    },
     "C67A9CCCB6D_v2_sub_g.cicNZ3bBCJ1HuAuP1Elfu2": {
       "namespace": "UiPath.IntegrationService.Activities.SWEntities.C67A9CCCB6D_v2_sub_generateChatCompletion_Create.Bundle",
       "providerName": "CustomEntities",
@@ -18,21 +27,12 @@
         "assemblyName": "C1F775216B1_generate.D9bAE4htkVP1ES9Yk1JRpt6"
       }
     },
-    "Studio.Generated.TypedDataTable1": {
-      "namespace": "System.Data",
-      "providerName": "TypedDataTable",
-      "key": {
-        "name": "Studio.Generated.TypedDataTable1",
-        "hash": "ReadRangeConnections\u00601_1|DataTable|T1PNoYwrqgwDVLtfmj7L5e0Sq02OEbqHPC8RFhICuUU",
-        "assemblyName": "Studio.Generated.TypedDataTable1"
-      }
-    },
     "Studio.Generated.TypedDataTable2": {
       "namespace": "System.Data",
       "providerName": "TypedDataTable",
       "key": {
         "name": "Studio.Generated.TypedDataTable2",
-        "hash": "ReadRangeConnections\u00601_2|DataTable|T1PNoYwrqgwDVLtfmj7L5e0Sq02OEbqHPC8RFhICuUU",
+        "hash": "ReadRangeConnections\u00601_2|DataTable|T1PNoYwrqgwDVLtfmj7L5e0Sq02OEbqHPC8RFhICuUU|M8QgJnMcDYq2DQeuuBU0Jk546eYbnq2FCcwUoYRi4Ss|HT8aFX0uTakdBZzx1gQ7QazRUYM25L1273kAdp3Xng",
         "assemblyName": "Studio.Generated.TypedDataTable2"
       }
     },
@@ -41,7 +41,7 @@
       "providerName": "TypedDataTable",
       "key": {
         "name": "Studio.Generated.TypedDataTable3",
-        "hash": "ReadRangeConnections\u00601_2|DataTable|KM2n0EUin7W3t4dw7VYJVfERG6bIY31HygVGfOwlDM",
+        "hash": "ReadRangeConnections\u00601_2|DataTable|nyPxfrVOeBUmF2sogej7wr6kxfnuoEGldxWgGkCSr3I|M8QgJnMcDYq2DQeuuBU0Jk546eYbnq2FCcwUoYRi4Ss|HT8aFX0uTakdBZzx1gQ7QazRUYM25L1273kAdp3Xng",
         "assemblyName": "Studio.Generated.TypedDataTable3"
       }
     },
@@ -50,8 +50,17 @@
       "providerName": "TypedDataTable",
       "key": {
         "name": "Studio.Generated.TypedDataTable4",
-        "hash": "ReadRangeConnections\u00601_4|DataTable|T1PNoYwrqgwDVLtfmj7L5e0Sq02OEbqHPC8RFhICuUU",
+        "hash": "ReadRangeConnections\u00601_4|DataTable|T1PNoYwrqgwDVLtfmj7L5e0Sq02OEbqHPC8RFhICuUU|M8QgJnMcDYq2DQeuuBU0Jk546eYbnq2FCcwUoYRi4Ss|HT8aFX0uTakdBZzx1gQ7QazRUYM25L1273kAdp3Xng",
         "assemblyName": "Studio.Generated.TypedDataTable4"
+      }
+    },
+    "CFF6BB82F91_v2_sub_g.PT9Ba2YKLZJ18lW6M4JNwCv": {
+      "namespace": "UiPath.IntegrationService.Activities.SWEntities.CFF6BB82F91_v2_sub_generateChatCompletion_Create.Bundle",
+      "providerName": "CustomEntities",
+      "key": {
+        "name": "UiPath.IntegrationService.Activities.SWEntities.CFF6BB82F91_v2_sub_generateChatCompletion_Create",
+        "hash": "WURZQ0EydURWdHVvSVJpeXlsS2RvRGlMeDdnNncxUGI5N05EQlIzRzg5TFNBaHpJNjdvb2d2NDU4eHN2R3l6YWsxWDFodEJ3Y1BETGlmVUtSckFrRFE9PQ",
+        "assemblyName": "CFF6BB82F91_v2_sub_g.PT9Ba2YKLZJ18lW6M4JNwCv"
       }
     }
   }
